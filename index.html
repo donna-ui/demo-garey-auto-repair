@@ -421,6 +421,25 @@
     position: relative;
     min-height: 360px;
   }
+  .translator-photo {
+    margin: -1.6rem -1.6rem 1.4rem;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-bottom: 1px solid var(--line);
+    position: relative;
+  }
+  .translator-photo img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    filter: contrast(1.05) saturate(0.9);
+  }
+  .translator-photo::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(11,14,20,0.15), rgba(11,14,20,0.65));
+    pointer-events: none;
+  }
   .translator-head {
     font-family: var(--mono);
     font-size: 10px;
@@ -519,25 +538,43 @@
   .bay-stage {
     position: relative;
     border: 1px solid var(--line);
-    background:
-      radial-gradient(ellipse at 50% 90%, rgba(197,255,0,0.08), transparent 50%),
-      var(--panel);
+    background: var(--graphite);
     border-radius: 4px;
-    padding: 1.5rem;
-    aspect-ratio: 16/10;
+    aspect-ratio: 16/9;
     overflow: hidden;
-    cursor: none; /* custom cursor takes over inside */
+    cursor: none;
+  }
+  .bay-photo {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    filter: contrast(1.05) saturate(0.92);
+  }
+  /* subtle scanline overlay over the photo to keep the OS feel */
+  .bay-scan {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background:
+      linear-gradient(transparent 50%, rgba(11,14,20,0.18) 50%);
+    background-size: 100% 3px;
+    mix-blend-mode: multiply;
+    opacity: 0.5;
   }
   .bay-stage:hover .bay-cursor { opacity: 1; }
   .bay-cursor {
     position: absolute;
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     pointer-events: none;
     transform: translate(-50%, -50%);
     opacity: 0;
-    transition: opacity .2s ease;
-    z-index: 4;
+    transition: opacity .18s ease;
+    z-index: 5;
   }
   .bay-cursor::before, .bay-cursor::after {
     content: "";
@@ -548,29 +585,37 @@
     inset: 0;
     border-radius: 50%;
     animation: probe 1.6s ease-in-out infinite;
+    box-shadow: 0 0 12px var(--arc-glow);
   }
   .bay-cursor::after {
-    inset: 28px;
+    inset: 24px;
     border-radius: 50%;
     background: var(--arc);
-    box-shadow: 0 0 16px var(--arc-glow);
+    box-shadow: 0 0 12px var(--arc-glow);
   }
   @keyframes probe {
-    0%, 100% { transform: scale(1); opacity: 0.7; }
-    50% { transform: scale(1.15); opacity: 0.3; }
+    0%, 100% { transform: scale(1); opacity: 0.85; }
+    50% { transform: scale(1.18); opacity: 0.35; }
   }
 
-  .bay-svg { width: 100%; height: 100%; position: relative; z-index: 2; }
+  .bay-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+  }
   .bay-region {
     fill: transparent;
     stroke: transparent;
     cursor: none;
-    transition: fill .2s ease, stroke .2s ease;
+    transition: fill .18s ease, stroke .18s ease;
+    pointer-events: all;
   }
   .bay-region:hover {
-    fill: rgba(197,255,0,0.08);
+    fill: rgba(197,255,0,0.14);
     stroke: var(--arc);
-    stroke-width: 1;
+    stroke-width: 1.2;
     stroke-dasharray: 4 3;
   }
   .bay-stage.no-cursor { cursor: default; }
@@ -638,15 +683,21 @@
 
   .bay-tip {
     position: absolute;
-    inset: auto 1.5rem 1rem 1.5rem;
+    inset: auto auto 14px 14px;
+    padding: 6px 10px;
     font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: 0.16em;
+    font-size: 10px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: var(--pearl-mute);
+    color: var(--arc);
+    background: rgba(11,14,20,0.7);
+    border: 1px solid var(--arc);
+    backdrop-filter: blur(8px);
     pointer-events: none;
-    z-index: 3;
+    z-index: 4;
+    transition: opacity .25s;
   }
+  .bay-tip.hidden { opacity: 0; }
 
   /* ============ MOD.03 — HOW WE WORK ============ */
   .process {
@@ -698,14 +749,6 @@
     color: var(--pearl-dim);
     margin: 0;
     max-width: 60ch;
-  }
-  /* one warm pull-moment for the final step */
-  .step:last-child .step-title {
-    font-family: var(--warm);
-    font-weight: 900;
-    font-style: normal;
-    color: var(--amber);
-    font-size: clamp(1.4rem, 2.3vw, 1.85rem);
   }
 
   /* ============ MOD.04 — WHAT LIVES HERE ============ */
@@ -1118,6 +1161,9 @@
 
       <div class="translator">
         <div class="translator-input">
+          <figure class="translator-photo" aria-hidden="true">
+            <img src="assets/scan-tool.jpg" alt="" loading="lazy" decoding="async" />
+          </figure>
           <div class="translator-head">
             <span>INPUT · SYMPTOM</span>
             <span>STEP 01/02</span>
@@ -1160,51 +1206,21 @@
 
       <div class="bay">
         <figure class="bay-stage" id="bayStage">
+          <img class="bay-photo" src="assets/bay-diagnostic.jpg" alt="A sedan on a hydraulic lift in the Garey Auto Repair shop bay" />
+          <div class="bay-scan" aria-hidden="true"></div>
           <div class="bay-cursor" id="bayCursor" aria-hidden="true"></div>
 
-          <svg class="bay-svg" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Side cutaway of a vehicle with diagnostic regions">
-            <!-- ground line -->
-            <line x1="40" y1="290" x2="560" y2="290" stroke="#2A3142" stroke-width="1" stroke-dasharray="4 4" />
-
-            <!-- silhouette -->
-            <g fill="none" stroke="#3A4256" stroke-width="1.4">
-              <path d="M70,260 L100,260 C108,235 130,210 160,205 L300,200 C330,200 360,205 380,215 L470,235 L520,250 L540,260 L555,260 L555,275 L545,275 C540,290 525,295 510,290 C495,295 480,290 475,275 L195,275 C190,290 175,295 160,290 C145,295 130,290 125,275 L80,275 C72,275 70,272 70,265 Z" fill="#0E1320" />
-              <!-- windshield/cabin glass -->
-              <path d="M180,205 L210,170 L320,166 L370,205" fill="#10172A" />
-              <!-- door line -->
-              <line x1="280" y1="170" x2="280" y2="270" />
-              <!-- hood -->
-              <line x1="180" y1="205" x2="380" y2="215" />
-            </g>
-
-            <!-- wheels -->
-            <g>
-              <circle cx="160" cy="285" r="22" fill="#0B0E14" stroke="#3A4256" stroke-width="1.4" />
-              <circle cx="160" cy="285" r="9" fill="none" stroke="#3A4256" stroke-width="1" />
-              <circle cx="490" cy="285" r="22" fill="#0B0E14" stroke="#3A4256" stroke-width="1.4" />
-              <circle cx="490" cy="285" r="9" fill="none" stroke="#3A4256" stroke-width="1" />
-            </g>
-
-            <!-- region labels (subtle) -->
-            <g fill="#4F5868" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.12em">
-              <text x="425" y="200">ENGINE</text>
-              <text x="245" y="158">CABIN</text>
-              <text x="135" y="328">FRONT BRK</text>
-              <text x="465" y="328">REAR BRK</text>
-              <text x="295" y="245">SUSPENSION</text>
-              <text x="215" y="245">DRIVETRAIN</text>
-            </g>
-
-            <!-- INTERACTIVE REGIONS -->
-            <rect class="bay-region" data-region="engine" x="370" y="180" width="170" height="80" />
-            <rect class="bay-region" data-region="brakes" x="120" y="270" width="80" height="50" />
-            <rect class="bay-region" data-region="brakes" x="450" y="270" width="80" height="50" />
-            <rect class="bay-region" data-region="suspension" x="240" y="220" width="180" height="60" />
-            <rect class="bay-region" data-region="drivetrain" x="200" y="220" width="50" height="60" />
-            <rect class="bay-region" data-region="cabin" x="190" y="160" width="200" height="55" />
+          <svg class="bay-overlay" viewBox="0 0 600 338" preserveAspectRatio="none" aria-hidden="true">
+            <!-- INTERACTIVE REGIONS — positioned over the photo -->
+            <rect class="bay-region" data-region="engine"     x="430" y="155" width="135" height="85"  rx="2"/>
+            <rect class="bay-region" data-region="cabin"      x="285" y="115" width="155" height="55"  rx="2"/>
+            <rect class="bay-region" data-region="drivetrain" x="285" y="170" width="145" height="55"  rx="2"/>
+            <rect class="bay-region" data-region="suspension" x="240" y="225" width="200" height="40"  rx="2"/>
+            <rect class="bay-region" data-region="brakes"     x="430" y="220" width="100" height="80"  rx="2"/>
+            <rect class="bay-region" data-region="brakes"     x="170" y="220" width="100" height="80"  rx="2"/>
           </svg>
 
-          <div class="bay-tip">▸ Move cursor over a system to read it</div>
+          <div class="bay-tip" id="bayTip">▸ HOVER ANY SYSTEM</div>
         </figure>
 
         <aside class="bay-hud" aria-live="polite">
@@ -1753,10 +1769,11 @@
     });
     stage.addEventListener('mouseleave', () => { cursor.style.opacity = 0; });
 
+    const tip = document.getElementById('bayTip');
     document.querySelectorAll('.bay-region').forEach(reg => {
-      reg.addEventListener('mouseenter', () => setRegion(reg.dataset.region));
-      reg.addEventListener('click',      () => setRegion(reg.dataset.region));
-      reg.addEventListener('focus',      () => setRegion(reg.dataset.region));
+      reg.addEventListener('mouseenter', () => { setRegion(reg.dataset.region); if (tip) tip.classList.add('hidden'); });
+      reg.addEventListener('click',      () => { setRegion(reg.dataset.region); if (tip) tip.classList.add('hidden'); });
+      reg.addEventListener('focus',      () => { setRegion(reg.dataset.region); if (tip) tip.classList.add('hidden'); });
       reg.setAttribute('tabindex','0');
     });
   })();
