@@ -1,0 +1,1778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5" />
+<title>Garey Auto Repair · Pomona · Under new hands</title>
+<meta name="description" content="Garey Auto Repair, Pomona. Twenty years on Garey Ave, now under new hands. Brakes, suspension, engine and transmission rebuilds, diesel, diagnostics. The light is a sentence — we translate." />
+<meta property="og:title" content="Garey Auto Repair · Pomona" />
+<meta property="og:description" content="Twenty years on Garey Ave, now under new hands. The light is a sentence. We translate." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta name="theme-color" content="#0B0E14" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@300;400;500;700&family=Fraunces:opsz,wght@9..144,900&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRepair",
+  "name": "Garey Auto Repair",
+  "image": "https://garey-auto-repair.vercel.app/og.jpg",
+  "@id": "https://garey-auto-repair.vercel.app/#shop",
+  "url": "https://garey-auto-repair.vercel.app",
+  "telephone": "+19093926056",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "2580 N Garey Ave",
+    "addressLocality": "Pomona",
+    "addressRegion": "CA",
+    "postalCode": "91767",
+    "addressCountry": "US"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 34.0976, "longitude": -117.7506 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "17:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Saturday"], "opens": "08:00", "closes": "14:00" }
+  ],
+  "areaServed": ["Pomona","Claremont","La Verne","San Dimas","Glendora","Diamond Bar","Chino","Montclair","Upland"],
+  "knowsAbout": ["Brakes","Suspension","Engine rebuild","Transmission rebuild","Diesel","Diagnostics","OBD-II"]
+}
+</script>
+
+<style>
+  /* ============ GHL WHITE-BG OVERRIDE ============ */
+  html, body,
+  .body-wrapper,
+  .hl_page-creator--content,
+  [class*="hl_page"],
+  #preview-container,
+  #section-0,
+  .container-width {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+
+  /* ============ TOKENS ============ */
+  :root {
+    --graphite:    #0B0E14;
+    --panel:       #151A24;
+    --panel-2:     #1E2533;
+    --line:        #2A3142;
+    --pearl:       #E8EBF0;
+    --pearl-dim:   #8A93A6;
+    --pearl-mute:  #4F5868;
+    --arc:         #C5FF00;
+    --arc-glow:    rgba(197,255,0,0.35);
+    --amber:       #FFB845;
+    --warn:        #FF5C00;
+
+    --display: 'Space Grotesk', system-ui, sans-serif;
+    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --warm: 'Fraunces', Georgia, serif;
+
+    --gutter: clamp(1rem, 4vw, 2.5rem);
+    --max: 1440px;
+  }
+
+  *,*::before,*::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--display);
+    font-weight: 400;
+    color: var(--pearl);
+    background: var(--graphite);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  .gos-shell {
+    position: relative;
+    min-height: 100vh;
+    background:
+      radial-gradient(ellipse at 80% -20%, rgba(197,255,0,0.06), transparent 50%),
+      radial-gradient(ellipse at 0% 100%, rgba(255,184,69,0.04), transparent 60%),
+      var(--graphite);
+    overflow: hidden;
+  }
+
+  /* OS scanline texture (replaces my default grain) */
+  .gos-shell::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(transparent 50%, rgba(232,235,240,0.012) 50%);
+    background-size: 100% 3px;
+    z-index: 1;
+    mix-blend-mode: overlay;
+  }
+  /* OS grid texture, very low contrast */
+  .gos-shell::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image:
+      linear-gradient(rgba(232,235,240,0.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232,235,240,0.018) 1px, transparent 1px);
+    background-size: 64px 64px;
+    z-index: 1;
+  }
+
+  ::selection { background: var(--arc); color: var(--graphite); }
+
+  a { color: inherit; text-decoration: none; }
+  button { font-family: inherit; cursor: pointer; }
+  img, svg { max-width: 100%; display: block; }
+
+  .container {
+    width: 100%;
+    max-width: var(--max);
+    margin: 0 auto;
+    padding-inline: var(--gutter);
+    position: relative;
+    z-index: 2;
+  }
+
+  .mono { font-family: var(--mono); letter-spacing: 0.02em; }
+  .label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pearl-dim);
+  }
+
+  /* ============ NAV ============ */
+  .gos-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    backdrop-filter: blur(14px);
+    background: rgba(11,14,20,0.72);
+    border-bottom: 1px solid var(--line);
+  }
+  .gos-nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .gos-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: var(--mono);
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pearl);
+  }
+  .gos-logo-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--arc);
+    box-shadow: 0 0 12px var(--arc-glow);
+    animation: pulse 2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.55; transform: scale(0.85); }
+  }
+
+  .gos-nav-actions { display: flex; gap: 16px; align-items: center; }
+  .gos-nav-link {
+    display: none;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--pearl-dim);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .gos-nav-link:hover { color: var(--arc); }
+  @media (min-width: 880px) {
+    .gos-nav-link { display: inline-flex; gap: 8px; align-items: center; }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border: 1px solid var(--line);
+    background: transparent;
+    color: var(--pearl);
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    transition: all .2s ease;
+    border-radius: 2px;
+  }
+  .btn:hover { border-color: var(--arc); color: var(--arc); }
+
+  .btn-primary {
+    background: var(--arc);
+    border-color: var(--arc);
+    color: var(--graphite);
+    font-weight: 500;
+  }
+  .btn-primary:hover {
+    background: transparent;
+    color: var(--arc);
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    padding-block: clamp(2rem, 6vw, 5rem) clamp(3rem, 8vw, 6rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  @media (min-width: 1024px) {
+    .hero-grid { grid-template-columns: minmax(0, 1fr) 360px; gap: 3rem; align-items: end; }
+  }
+
+  .hero-id {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+    margin-bottom: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    align-items: center;
+  }
+  .hero-id span { display: inline-flex; align-items: center; gap: 8px; }
+  .hero-id .dot {
+    width: 6px; height: 6px; background: var(--arc);
+    box-shadow: 0 0 8px var(--arc-glow);
+    border-radius: 50%;
+  }
+
+  .hero-headline {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(2.6rem, 7.5vw, 6rem);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+    color: var(--pearl);
+    margin: 0 0 1.4rem;
+  }
+  .hero-headline .verb {
+    font-weight: 700;
+    color: var(--arc);
+    display: inline-block;
+    min-width: 8ch;
+    position: relative;
+  }
+  .hero-headline .verb::after {
+    content: "";
+    display: inline-block;
+    width: 0.45em;
+    height: 0.95em;
+    background: var(--arc);
+    margin-left: 4px;
+    transform: translateY(0.12em);
+    animation: caret 0.9s steps(1) infinite;
+  }
+  @keyframes caret { 50% { opacity: 0; } }
+
+  .hero-sub {
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    line-height: 1.45;
+    color: var(--pearl-dim);
+    max-width: 48ch;
+    margin: 0 0 2.4rem;
+  }
+  .hero-sub strong {
+    color: var(--pearl);
+    font-weight: 500;
+  }
+
+  .hero-ctas { display: flex; flex-wrap: wrap; gap: 14px; }
+
+  /* Telemetry rail */
+  .telemetry {
+    border: 1px solid var(--line);
+    background: linear-gradient(180deg, rgba(21,26,36,0.85), rgba(11,14,20,0.6));
+    padding: 18px;
+    border-radius: 4px;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
+    height: 320px;
+  }
+  .telemetry-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pearl-dim);
+  }
+  .telemetry-live {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: var(--arc);
+  }
+  .telemetry-live::before {
+    content: ""; width: 6px; height: 6px; background: var(--arc);
+    border-radius: 50%; animation: pulse 1.4s ease-in-out infinite;
+  }
+  .telemetry-stream {
+    font-family: var(--mono);
+    font-size: 11px;
+    line-height: 1.6;
+    color: var(--pearl-dim);
+    height: calc(100% - 40px);
+    overflow: hidden;
+    position: relative;
+  }
+  .telemetry-stream::after {
+    content: "";
+    position: absolute;
+    inset: auto 0 0 0;
+    height: 60px;
+    background: linear-gradient(transparent, var(--graphite));
+    pointer-events: none;
+  }
+  .stream-line { padding: 3px 0; opacity: 0; transform: translateY(8px); }
+  .stream-line.in { animation: streamIn .5s ease forwards; }
+  .stream-line .ts { color: var(--pearl-mute); margin-right: 8px; }
+  .stream-line .ok { color: var(--arc); }
+  .stream-line .warn { color: var(--amber); }
+  @keyframes streamIn { to { opacity: 1; transform: translateY(0); } }
+
+  /* ============ SECTION CHROME ============ */
+  .module {
+    position: relative;
+    padding-block: clamp(3.5rem, 7vw, 6rem);
+    border-bottom: 1px solid var(--line);
+  }
+  .mod-id {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+    margin-bottom: 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mod-id::before {
+    content: "";
+    display: inline-block;
+    width: 28px; height: 1px;
+    background: var(--arc);
+  }
+  .mod-h2 {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.025em;
+    margin: 0 0 1.2rem;
+  }
+  .mod-h2 strong { font-weight: 700; color: var(--arc); }
+  .mod-lede {
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.5;
+    color: var(--pearl-dim);
+    max-width: 58ch;
+  }
+
+  /* ============ MOD.01 — TRANSLATOR ============ */
+  .translator {
+    margin-top: 2.5rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 880px) {
+    .translator { grid-template-columns: 1fr 1.2fr; align-items: stretch; }
+  }
+  .translator-input,
+  .translator-output {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    padding: 1.6rem;
+    border-radius: 4px;
+    position: relative;
+    min-height: 360px;
+  }
+  .translator-head {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pearl-dim);
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--line);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .translator-prompt {
+    font-family: var(--display);
+    font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    line-height: 1.35;
+    color: var(--pearl);
+    margin: 0 0 1.4rem;
+    font-weight: 400;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    appearance: none;
+    border: 1px solid var(--line);
+    background: var(--panel-2);
+    color: var(--pearl);
+    font-family: var(--mono);
+    font-size: 12px;
+    padding: 9px 14px;
+    border-radius: 999px;
+    transition: all .18s ease;
+    text-align: left;
+    line-height: 1.3;
+  }
+  .chip:hover { border-color: var(--arc); color: var(--arc); }
+  .chip.active {
+    background: var(--arc);
+    color: var(--graphite);
+    border-color: var(--arc);
+    font-weight: 500;
+  }
+
+  .translator-output {
+    background: var(--graphite);
+    display: flex;
+    flex-direction: column;
+  }
+  .out-status {
+    color: var(--arc);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+  }
+  .out-body {
+    font-family: var(--mono);
+    font-size: clamp(0.92rem, 1.05vw, 1.05rem);
+    line-height: 1.7;
+    color: var(--pearl);
+    flex: 1;
+    white-space: pre-wrap;
+    margin: 0;
+  }
+  .out-body .accent { color: var(--arc); }
+  .out-body .meta { color: var(--pearl-mute); }
+  .out-cursor::after {
+    content: "▮";
+    color: var(--arc);
+    animation: caret 0.9s steps(1) infinite;
+    margin-left: 2px;
+  }
+  .out-foot {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /* ============ MOD.02 — LIVE BAY DIAGNOSTIC ============ */
+  .bay {
+    margin-top: 2.5rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1024px) {
+    .bay { grid-template-columns: 1.6fr 1fr; align-items: start; }
+  }
+
+  .bay-stage {
+    position: relative;
+    border: 1px solid var(--line);
+    background:
+      radial-gradient(ellipse at 50% 90%, rgba(197,255,0,0.08), transparent 50%),
+      var(--panel);
+    border-radius: 4px;
+    padding: 1.5rem;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+    cursor: none; /* custom cursor takes over inside */
+  }
+  .bay-stage:hover .bay-cursor { opacity: 1; }
+  .bay-cursor {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity .2s ease;
+    z-index: 4;
+  }
+  .bay-cursor::before, .bay-cursor::after {
+    content: "";
+    position: absolute;
+    border: 1px solid var(--arc);
+  }
+  .bay-cursor::before {
+    inset: 0;
+    border-radius: 50%;
+    animation: probe 1.6s ease-in-out infinite;
+  }
+  .bay-cursor::after {
+    inset: 28px;
+    border-radius: 50%;
+    background: var(--arc);
+    box-shadow: 0 0 16px var(--arc-glow);
+  }
+  @keyframes probe {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50% { transform: scale(1.15); opacity: 0.3; }
+  }
+
+  .bay-svg { width: 100%; height: 100%; position: relative; z-index: 2; }
+  .bay-region {
+    fill: transparent;
+    stroke: transparent;
+    cursor: none;
+    transition: fill .2s ease, stroke .2s ease;
+  }
+  .bay-region:hover {
+    fill: rgba(197,255,0,0.08);
+    stroke: var(--arc);
+    stroke-width: 1;
+    stroke-dasharray: 4 3;
+  }
+  .bay-stage.no-cursor { cursor: default; }
+  .bay-stage.no-cursor .bay-region { cursor: pointer; }
+
+  .bay-hud {
+    border: 1px solid var(--line);
+    background: var(--graphite);
+    border-radius: 4px;
+    padding: 1.4rem;
+    font-family: var(--mono);
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+  }
+  .hud-head {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pearl-dim);
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .hud-region {
+    color: var(--arc);
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    min-height: 1.3em;
+  }
+  .hud-readouts { display: grid; gap: 10px; flex: 1; }
+  .hud-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    font-size: 12px;
+    color: var(--pearl-dim);
+    padding: 6px 0;
+    border-bottom: 1px dashed rgba(232,235,240,0.06);
+  }
+  .hud-row .v {
+    color: var(--pearl);
+    font-weight: 500;
+  }
+  .hud-row .v.ok { color: var(--arc); }
+  .hud-row .v.warn { color: var(--amber); }
+  .hud-empty {
+    color: var(--pearl-mute);
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .hud-foot {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--line);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+  }
+
+  .bay-tip {
+    position: absolute;
+    inset: auto 1.5rem 1rem 1.5rem;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+    pointer-events: none;
+    z-index: 3;
+  }
+
+  /* ============ MOD.03 — HOW WE WORK ============ */
+  .process {
+    margin-top: 2.5rem;
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0;
+    counter-reset: step;
+  }
+  .step {
+    border-top: 1px solid var(--line);
+    padding: 1.8rem 0;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+    align-items: baseline;
+    transition: padding-left .25s ease;
+  }
+  @media (min-width: 880px) {
+    .step { grid-template-columns: 200px 1fr 1.6fr; gap: 2.5rem; }
+  }
+  .step:last-child { border-bottom: 1px solid var(--line); }
+  .step:hover { padding-left: 12px; }
+  .step:hover .step-id { color: var(--arc); }
+
+  .step-id {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+    padding-top: 4px;
+    transition: color .25s ease;
+  }
+  .step-title {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: clamp(1.2rem, 2vw, 1.55rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    margin: 0;
+    color: var(--pearl);
+  }
+  .step-body {
+    font-family: var(--display);
+    font-size: clamp(0.95rem, 1.2vw, 1.05rem);
+    line-height: 1.55;
+    color: var(--pearl-dim);
+    margin: 0;
+    max-width: 60ch;
+  }
+  /* one warm pull-moment for the final step */
+  .step:last-child .step-title {
+    font-family: var(--warm);
+    font-weight: 900;
+    font-style: normal;
+    color: var(--amber);
+    font-size: clamp(1.4rem, 2.3vw, 1.85rem);
+  }
+
+  /* ============ MOD.04 — WHAT LIVES HERE ============ */
+  .scope {
+    margin-top: 2.5rem;
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 4px;
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 880px) { .scope { grid-template-columns: 220px 1fr; } }
+
+  .scope-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--arc);
+    padding-top: 4px;
+  }
+  .scope-list {
+    list-style: none;
+    margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .scope-list li {
+    border: 1px solid var(--line);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--pearl);
+    background: var(--graphite);
+  }
+  .scope-list li::before {
+    content: "+";
+    color: var(--arc);
+    margin-right: 8px;
+    font-weight: 700;
+  }
+
+  /* ============ MOD.05 — RECEIPT-STYLE SERVICES ============ */
+  .receipts {
+    margin-top: 2.5rem;
+    display: grid;
+    gap: 1.4rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .receipts { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1100px) { .receipts { grid-template-columns: 1.3fr 1fr 1fr; grid-auto-flow: dense; } }
+
+  .receipt {
+    background: var(--pearl);
+    color: var(--graphite);
+    padding: 1.6rem 1.6rem 1.2rem;
+    border-radius: 2px;
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.55;
+    position: relative;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.05),
+      0 30px 60px -30px rgba(0,0,0,0.6);
+    transition: transform .25s ease;
+  }
+  .receipt:hover { transform: translateY(-4px) rotate(-0.4deg); }
+  .receipt.feature { grid-column: span 1; }
+  @media (min-width: 1100px) {
+    .receipt.feature { grid-column: span 1; grid-row: span 2; }
+  }
+
+  /* paper-edge perforation */
+  .receipt::before {
+    content: "";
+    position: absolute;
+    left: 0; right: 0; bottom: -8px;
+    height: 14px;
+    background:
+      radial-gradient(circle at 7px 0, var(--graphite) 4px, transparent 4.5px) repeat-x;
+    background-size: 14px 14px;
+    background-position: 0 -7px;
+  }
+
+  .r-head {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed rgba(11,14,20,0.3);
+    margin-bottom: 10px;
+  }
+  .r-head .r-id {
+    color: rgba(11,14,20,0.55);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .r-title {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+    letter-spacing: -0.02em;
+    margin: 0.2rem 0 0.4rem;
+    line-height: 1;
+  }
+  .r-tag {
+    color: rgba(11,14,20,0.55);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .r-line {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    padding: 4px 0;
+    border-bottom: 1px dotted rgba(11,14,20,0.18);
+  }
+  .r-line .l { padding-right: 1rem; }
+  .r-line .p { font-weight: 500; }
+  .r-total {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 2px solid var(--graphite);
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+  }
+  .r-total .ttl { letter-spacing: 0.18em; text-transform: uppercase; font-size: 11px; }
+  .r-total .ttv { font-size: 14px; }
+  .r-stamp {
+    margin-top: 12px;
+    display: inline-block;
+    border: 2px solid var(--graphite);
+    padding: 4px 8px;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    transform: rotate(-3deg);
+    color: var(--graphite);
+    text-transform: uppercase;
+  }
+  .r-foot {
+    margin-top: 14px;
+    font-size: 10px;
+    color: rgba(11,14,20,0.5);
+    letter-spacing: 0.06em;
+  }
+
+  /* ============ MOD.06 — REVIEWS ============ */
+  .reviews {
+    margin-top: 2.5rem;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) { .reviews { grid-template-columns: 1fr 1fr; } }
+  .rev {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 4px;
+    padding: 1.4rem;
+    font-family: var(--mono);
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--pearl);
+    position: relative;
+  }
+  .rev-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+    padding-bottom: 10px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid var(--line);
+  }
+  .rev-stars { color: var(--arc); letter-spacing: 0.05em; }
+  .rev-q::before { content: "> "; color: var(--arc); }
+
+  /* ============ MOD.07 — CONTACT ============ */
+  .contact-grid {
+    margin-top: 2rem;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 1024px) { .contact-grid { grid-template-columns: 1.4fr 1fr; } }
+
+  .phone-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .phone-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pearl-dim);
+  }
+  .phone-num {
+    font-family: var(--display);
+    font-weight: 300;
+    font-size: clamp(2.6rem, 9vw, 6rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--pearl);
+    text-decoration: none;
+    display: inline-block;
+    transition: color .2s;
+    border-bottom: 2px solid transparent;
+  }
+  .phone-num:hover { color: var(--arc); border-bottom-color: var(--arc); }
+  .phone-sub {
+    font-family: var(--display);
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    color: var(--pearl-dim);
+    line-height: 1.5;
+    max-width: 38ch;
+  }
+
+  .status-card {
+    border: 1px solid var(--line);
+    background: var(--panel);
+    border-radius: 4px;
+    padding: 1.4rem;
+  }
+  .status-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: baseline;
+    padding: 10px 0;
+    border-bottom: 1px dashed rgba(232,235,240,0.06);
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--pearl-dim);
+  }
+  .status-row:last-child { border-bottom: none; }
+  .status-row .v { color: var(--pearl); }
+  .status-row .v.live { color: var(--arc); }
+  .status-row .v.live::before {
+    content: "";
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--arc);
+    border-radius: 50%;
+    margin-right: 8px;
+    animation: pulse 1.4s ease-in-out infinite;
+  }
+
+  /* ============ FOOTER ============ */
+  .gos-footer {
+    padding-block: 3rem 2rem;
+    border-top: 1px solid var(--line);
+    background: rgba(0,0,0,0.3);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: end;
+  }
+  @media (min-width: 720px) { .footer-grid { grid-template-columns: 1fr auto; } }
+  .footer-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--pearl-dim);
+    line-height: 1.8;
+  }
+  .footer-brand strong { color: var(--pearl); font-weight: 500; }
+  .footer-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--pearl-mute);
+    text-align: right;
+  }
+
+  /* ============ MOBILE STICKY STATUS BAR ============ */
+  .mobile-sticky {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 40;
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    padding: 10px 14px;
+    background: rgba(11,14,20,0.92);
+    backdrop-filter: blur(12px);
+    border-top: 1px solid var(--arc);
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--pearl);
+  }
+  .mobile-sticky .live { color: var(--arc); display: flex; align-items: center; gap: 8px; }
+  .mobile-sticky .live::before {
+    content: ""; width: 6px; height: 6px; background: var(--arc);
+    border-radius: 50%; animation: pulse 1.4s ease-in-out infinite;
+  }
+  .mobile-sticky a {
+    background: var(--arc);
+    color: var(--graphite);
+    padding: 0 14px;
+    display: inline-flex;
+    align-items: center;
+    font-weight: 500;
+    border-radius: 2px;
+  }
+  @media (min-width: 880px) { .mobile-sticky { display: none; } }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+    .hero-headline .verb::after,
+    .gos-logo-dot,
+    .telemetry-live::before,
+    .status-row .v.live::before,
+    .mobile-sticky .live::before { animation: none; }
+    .stream-line { opacity: 1; transform: none; }
+  }
+</style>
+</head>
+
+<body>
+<div class="gos-shell">
+
+  <!-- ============ NAV ============ -->
+  <nav class="gos-nav" aria-label="Primary">
+    <div class="container gos-nav-inner">
+      <a href="#top" class="gos-logo" aria-label="Garey Auto Repair home">
+        <span class="gos-logo-dot" aria-hidden="true"></span>
+        Garey Auto Repair
+      </a>
+      <div class="gos-nav-actions">
+        <a class="gos-nav-link" href="#translator">▸ Translator</a>
+        <a class="gos-nav-link" href="#process">▸ How we work</a>
+        <a class="gos-nav-link" href="#contact">▸ Contact</a>
+        <a class="btn btn-primary" href="#contact">Book service →</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero" id="top">
+    <div class="container">
+
+      <div class="hero-id" aria-label="Site identity">
+        <span><span class="dot" aria-hidden="true"></span>SYSTEM ONLINE · BAY 03 OPEN</span>
+        <span>POMONA · CA · 91767</span>
+        <span>EST. 2006 · UNDER NEW HANDS</span>
+      </div>
+
+      <div class="hero-grid">
+        <div>
+          <h1 class="hero-headline" aria-label="The check engine light is a sentence.">
+            the check engine<br />
+            light is a <span class="verb" id="verbWord">sentence.</span>
+          </h1>
+
+          <p class="hero-sub">
+            Twenty years on Garey Ave. RepairPal-certified.
+            Brakes, suspension, engine and transmission rebuilds, diesel,
+            diagnostics. Tell us what your car is doing —
+            <strong>we'll tell you what it's saying.</strong>
+          </p>
+
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="#translator">Try the translator →</a>
+            <a class="btn" href="#contact">Book service</a>
+          </div>
+        </div>
+
+        <aside class="telemetry" aria-label="Live shop telemetry">
+          <div class="telemetry-head">
+            <span>SHOP TELEMETRY</span>
+            <span class="telemetry-live">LIVE</span>
+          </div>
+          <div class="telemetry-stream" id="telemetry"></div>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MOD.01 — TRANSLATOR ============ -->
+  <section class="module" id="translator" aria-labelledby="m1">
+    <div class="container">
+      <div class="mod-id">MOD.01 · The Translator</div>
+      <h2 class="mod-h2" id="m1">Tell us what it's doing.<br /><strong>We'll tell you what it is.</strong></h2>
+      <p class="mod-lede">
+        Most repair quotes start with a guess. Ours start with a translation.
+        Pick what your car is doing — we'll tell you what's almost certainly
+        going on, what it costs to be sure, and whether you should drive it
+        home today.
+      </p>
+
+      <div class="translator">
+        <div class="translator-input">
+          <div class="translator-head">
+            <span>INPUT · SYMPTOM</span>
+            <span>STEP 01/02</span>
+          </div>
+          <p class="translator-prompt">What's it doing right now?</p>
+          <div class="chips" role="group" aria-label="Choose a symptom">
+            <button class="chip active" data-key="turning">Weird sound when turning</button>
+            <button class="chip" data-key="brake">Pulls left when braking</button>
+            <button class="chip" data-key="shudder">Shudders around 60 mph</button>
+            <button class="chip" data-key="light">Check engine light came on</button>
+            <button class="chip" data-key="cold">Hard to start when cold</button>
+          </div>
+        </div>
+
+        <div class="translator-output">
+          <div class="translator-head">
+            <span>OUTPUT · FIRST READ</span>
+            <span class="out-status" id="outStatus">READY</span>
+          </div>
+          <pre class="out-body" id="outBody"></pre>
+          <div class="out-foot">
+            <span>SOURCE · 20 YR ON GAREY AVE</span>
+            <span>SECOND OPINION FREE WITH BOOKING</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOD.02 — LIVE BAY DIAGNOSTIC ============ -->
+  <section class="module" id="bay" aria-labelledby="m2">
+    <div class="container">
+      <div class="mod-id">MOD.02 · Live Bay Diagnostic</div>
+      <h2 class="mod-h2">Hover the car. <strong>Read the car.</strong></h2>
+      <p class="mod-lede">
+        This is what we're looking at when your vehicle is in the bay.
+        Move your cursor across the cutaway — every system reports
+        live values the way our scan tool does.
+      </p>
+
+      <div class="bay">
+        <figure class="bay-stage" id="bayStage">
+          <div class="bay-cursor" id="bayCursor" aria-hidden="true"></div>
+
+          <svg class="bay-svg" viewBox="0 0 600 360" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Side cutaway of a vehicle with diagnostic regions">
+            <!-- ground line -->
+            <line x1="40" y1="290" x2="560" y2="290" stroke="#2A3142" stroke-width="1" stroke-dasharray="4 4" />
+
+            <!-- silhouette -->
+            <g fill="none" stroke="#3A4256" stroke-width="1.4">
+              <path d="M70,260 L100,260 C108,235 130,210 160,205 L300,200 C330,200 360,205 380,215 L470,235 L520,250 L540,260 L555,260 L555,275 L545,275 C540,290 525,295 510,290 C495,295 480,290 475,275 L195,275 C190,290 175,295 160,290 C145,295 130,290 125,275 L80,275 C72,275 70,272 70,265 Z" fill="#0E1320" />
+              <!-- windshield/cabin glass -->
+              <path d="M180,205 L210,170 L320,166 L370,205" fill="#10172A" />
+              <!-- door line -->
+              <line x1="280" y1="170" x2="280" y2="270" />
+              <!-- hood -->
+              <line x1="180" y1="205" x2="380" y2="215" />
+            </g>
+
+            <!-- wheels -->
+            <g>
+              <circle cx="160" cy="285" r="22" fill="#0B0E14" stroke="#3A4256" stroke-width="1.4" />
+              <circle cx="160" cy="285" r="9" fill="none" stroke="#3A4256" stroke-width="1" />
+              <circle cx="490" cy="285" r="22" fill="#0B0E14" stroke="#3A4256" stroke-width="1.4" />
+              <circle cx="490" cy="285" r="9" fill="none" stroke="#3A4256" stroke-width="1" />
+            </g>
+
+            <!-- region labels (subtle) -->
+            <g fill="#4F5868" font-family="JetBrains Mono, monospace" font-size="9" letter-spacing="0.12em">
+              <text x="425" y="200">ENGINE</text>
+              <text x="245" y="158">CABIN</text>
+              <text x="135" y="328">FRONT BRK</text>
+              <text x="465" y="328">REAR BRK</text>
+              <text x="295" y="245">SUSPENSION</text>
+              <text x="215" y="245">DRIVETRAIN</text>
+            </g>
+
+            <!-- INTERACTIVE REGIONS -->
+            <rect class="bay-region" data-region="engine" x="370" y="180" width="170" height="80" />
+            <rect class="bay-region" data-region="brakes" x="120" y="270" width="80" height="50" />
+            <rect class="bay-region" data-region="brakes" x="450" y="270" width="80" height="50" />
+            <rect class="bay-region" data-region="suspension" x="240" y="220" width="180" height="60" />
+            <rect class="bay-region" data-region="drivetrain" x="200" y="220" width="50" height="60" />
+            <rect class="bay-region" data-region="cabin" x="190" y="160" width="200" height="55" />
+          </svg>
+
+          <div class="bay-tip">▸ Move cursor over a system to read it</div>
+        </figure>
+
+        <aside class="bay-hud" aria-live="polite">
+          <div class="hud-head">
+            <span>HUD · LIVE READ</span>
+            <span id="hudStamp">—</span>
+          </div>
+          <div class="hud-region" id="hudRegion">— hover a system —</div>
+          <div class="hud-readouts" id="hudReadouts">
+            <p class="hud-empty">
+              The probe is idle. Each region above carries its own diagnostic
+              channel. Hover anywhere on the cutaway to bring it online.
+            </p>
+          </div>
+          <div class="hud-foot">SCAN · OBD-II · GAREY AUTO REPAIR</div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOD.03 — HOW WE WORK ============ -->
+  <section class="module" id="process" aria-labelledby="m3">
+    <div class="container">
+      <div class="mod-id">MOD.03 · How we work</div>
+      <h2 class="mod-h2" id="m3">Five steps from <strong>door to driveway.</strong></h2>
+      <p class="mod-lede">
+        Same five steps every car gets, every visit. Most shops skip
+        steps two and three. That's where the surprise charges live.
+      </p>
+
+      <ol class="process">
+        <li class="step">
+          <span class="step-id">01 · SCAN</span>
+          <h3 class="step-title">We read the car before we touch it.</h3>
+          <p class="step-body">OBD-II scan across every module, plus a visual on the lift. ~35 minutes. $75, free if you book the repair the same week.</p>
+        </li>
+        <li class="step">
+          <span class="step-id">02 · TRANSLATE</span>
+          <h3 class="step-title">We tell you what the codes mean.</h3>
+          <p class="step-body">Plain English, written down. What the car is doing, what's almost certainly causing it, what we'd want to confirm before we quote you parts.</p>
+        </li>
+        <li class="step">
+          <span class="step-id">03 · QUOTE</span>
+          <h3 class="step-title">Line items. Ranges. No surprises.</h3>
+          <p class="step-body">Every part, every hour, written like a receipt before any work begins. If a job comes in cheaper than the quote, you pay the cheaper number.</p>
+        </li>
+        <li class="step">
+          <span class="step-id">04 · FIX</span>
+          <h3 class="step-title">By the job, not by the hour.</h3>
+          <p class="step-body">Brakes, suspension, engine and transmission rebuilds, diesel. RepairPal-certified labor times. 12-month / 12k-mile warranty on rebuilds.</p>
+        </li>
+        <li class="step">
+          <span class="step-id">05 · ROAD-TEST</span>
+          <h3 class="step-title">Every job ends with a drive.</h3>
+          <p class="step-body">Same loop, every time — the on-ramp, the off-ramp, and the hill on Garey north of the freeway. If anything still feels off, the wheel comes back off the same day.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ MOD.04 — WHAT LIVES HERE ============ -->
+  <section class="module" id="scope" aria-labelledby="m4">
+    <div class="container">
+      <div class="mod-id">MOD.04 · Scope</div>
+      <h2 class="mod-h2" id="m4">What lives at <strong>Garey Auto Repair.</strong></h2>
+      <p class="mod-lede">
+        The avenue is full of "Garey" signs. This is the auto-repair side.
+        Mechanical work, diagnostics, rebuilds. If you're not sure whether
+        we're the right shop for what you've got going on — call. We'll tell
+        you straight.
+      </p>
+
+      <div class="scope">
+        <div class="scope-label">UNDER THIS ROOF</div>
+        <ul class="scope-list">
+          <li>Brakes · pad + rotor + line</li>
+          <li>Suspension · struts, bushings, alignments</li>
+          <li>Engine rebuilds</li>
+          <li>Transmission rebuilds</li>
+          <li>Diesel</li>
+          <li>OBD-II diagnostics</li>
+          <li>Tires + balance</li>
+          <li>Pre-purchase inspection</li>
+          <li>Second opinions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOD.05 — RECEIPT-STYLE SERVICES ============ -->
+  <section class="module" id="receipts" aria-labelledby="m5">
+    <div class="container">
+      <div class="mod-id">MOD.05 · The Receipt</div>
+      <h2 class="mod-h2" id="m5">A quote that <strong>reads like a receipt.</strong></h2>
+      <p class="mod-lede">
+        Most shops hand you a number on the way out the door. We hand you
+        the line items on the way in. Estimates below are typical ranges
+        for our bays — your actual quote depends on your vehicle, but
+        nothing on it will be a surprise.
+      </p>
+
+      <div class="receipts">
+
+        <!-- BRAKE JOB · feature -->
+        <article class="receipt feature">
+          <div class="r-head">
+            <span class="r-id">RCPT · 01 · BRAKE</span>
+            <span class="r-id">EST · 2026</span>
+          </div>
+          <h3 class="r-title">Brake Job</h3>
+          <div class="r-tag">Pads · rotors · line check</div>
+          <div class="r-line"><span class="l">Pad set, OEM-grade</span><span class="p">$80–$160</span></div>
+          <div class="r-line"><span class="l">Rotor pair, machined or replaced</span><span class="p">$120–$280</span></div>
+          <div class="r-line"><span class="l">Bench labor, axle</span><span class="p">$140–$220</span></div>
+          <div class="r-line"><span class="l">Brake fluid flush, if due</span><span class="p">$60</span></div>
+          <div class="r-line"><span class="l">Road test + caliper inspection</span><span class="p">included</span></div>
+          <div class="r-total">
+            <span class="ttl">Total · est range</span>
+            <span class="ttv">$280–$720</span>
+          </div>
+          <span class="r-stamp">Quoted in plain English</span>
+          <p class="r-foot">Dealer ranges typically run 1.6×–2.4× this. We'll show you why before you sign anything.</p>
+        </article>
+
+        <!-- DIAGNOSTIC -->
+        <article class="receipt">
+          <div class="r-head">
+            <span class="r-id">RCPT · 02 · DIAG</span>
+            <span class="r-id">~35 MIN</span>
+          </div>
+          <h3 class="r-title">Diagnostic</h3>
+          <div class="r-tag">OBD-II + listen + lift</div>
+          <div class="r-line"><span class="l">Scan tool read · all modules</span><span class="p">$45</span></div>
+          <div class="r-line"><span class="l">Visual inspection on lift</span><span class="p">$30</span></div>
+          <div class="r-line"><span class="l">Written translation</span><span class="p">included</span></div>
+          <div class="r-total"><span class="ttl">Total</span><span class="ttv">$75</span></div>
+          <p class="r-foot">Free if you book the repair the same week.</p>
+        </article>
+
+        <!-- ENGINE / TRANS REBUILD -->
+        <article class="receipt">
+          <div class="r-head">
+            <span class="r-id">RCPT · 03 · REBUILD</span>
+            <span class="r-id">QUOTE</span>
+          </div>
+          <h3 class="r-title">Engine + Trans Rebuild</h3>
+          <div class="r-tag">By the job · not the hour</div>
+          <div class="r-line"><span class="l">Engine rebuild, gasoline</span><span class="p">$2,800+</span></div>
+          <div class="r-line"><span class="l">Trans rebuild, automatic</span><span class="p">$2,200+</span></div>
+          <div class="r-line"><span class="l">Diesel rebuild</span><span class="p">quote</span></div>
+          <div class="r-total"><span class="ttl">Warranty</span><span class="ttv">12 mo / 12k</span></div>
+          <p class="r-foot">We walk you through every line before any tool comes out.</p>
+        </article>
+
+        <!-- SUSPENSION -->
+        <article class="receipt">
+          <div class="r-head">
+            <span class="r-id">RCPT · 04 · SUSP</span>
+            <span class="r-id">EST</span>
+          </div>
+          <h3 class="r-title">Suspension</h3>
+          <div class="r-tag">Struts · bushings · alignment</div>
+          <div class="r-line"><span class="l">Strut pair</span><span class="p">$280–$540</span></div>
+          <div class="r-line"><span class="l">Control arm bushings</span><span class="p">$180–$320</span></div>
+          <div class="r-line"><span class="l">Four-wheel alignment</span><span class="p">$120</span></div>
+          <div class="r-total"><span class="ttl">Total · est</span><span class="ttv">$580–$980</span></div>
+          <p class="r-foot">If your tires are wearing one side, this is usually why.</p>
+        </article>
+
+        <!-- TIRES -->
+        <article class="receipt">
+          <div class="r-head">
+            <span class="r-id">RCPT · 05 · TIRES</span>
+            <span class="r-id">SAME DAY</span>
+          </div>
+          <h3 class="r-title">Tires + Balance</h3>
+          <div class="r-tag">Mount · balance · TPMS</div>
+          <div class="r-line"><span class="l">Mount + balance, 4 tires</span><span class="p">$80</span></div>
+          <div class="r-line"><span class="l">TPMS reset</span><span class="p">$20</span></div>
+          <div class="r-line"><span class="l">Disposal</span><span class="p">$12</span></div>
+          <div class="r-total"><span class="ttl">Total</span><span class="ttv">$112</span></div>
+          <p class="r-foot">Bring your own tires. Or we'll source.</p>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOD.06 — REVIEWS ============ -->
+  <section class="module" id="reviews-sec" aria-labelledby="m6">
+    <div class="container">
+      <div class="mod-id">MOD.06 · Source data</div>
+      <h2 class="mod-h2">What customers say <strong>about this shop.</strong></h2>
+      <p class="mod-lede">
+        Real reviews of <em style="color:var(--pearl); font-style:normal;">Garey Auto Repair</em> —
+        not the lot's other businesses. Pulled from public Yelp.
+      </p>
+
+      <div class="reviews">
+        <article class="rev">
+          <div class="rev-meta"><span>@ GAREY AUTO REPAIR · YELP</span><span class="rev-stars">★★★★★</span></div>
+          <p class="rev-q">This shop is great. Great customer service, never upsells anything.</p>
+        </article>
+        <article class="rev">
+          <div class="rev-meta"><span>@ GAREY AUTO REPAIR · YELP</span><span class="rev-stars">★★★★★</span></div>
+          <p class="rev-q">Been going to them for over 2 yrs. My go-to every time.</p>
+        </article>
+        <article class="rev">
+          <div class="rev-meta"><span>@ GAREY AUTO REPAIR · YELP</span><span class="rev-stars">★★★★★</span></div>
+          <p class="rev-q">Super cool guys. I'll be returning for all my future car issues and services.</p>
+        </article>
+        <article class="rev">
+          <div class="rev-meta"><span>@ GAREY AUTO REPAIR · REPAIRPAL</span><span class="rev-stars">RP CERTIFIED</span></div>
+          <p class="rev-q">Quality auto repair at fair prices. Certified for fair labor times and warranty standards.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ MOD.07 — CONTACT ============ -->
+  <section class="module" id="contact" aria-labelledby="m7">
+    <div class="container">
+      <div class="mod-id">MOD.07 · Contact + book</div>
+      <h2 class="mod-h2" id="m7">Talk to a human. <strong>Or a wrench.</strong></h2>
+      <p class="mod-lede">
+        Booking is easier than calling. Calling is faster than texting.
+        Driving over still works — we're on Garey, just past the freeway.
+      </p>
+
+      <div class="contact-grid">
+        <div class="phone-block">
+          <span class="phone-label">DIRECT LINE · TUE–FRI 8a–5p · SAT 8a–2p</span>
+          <a class="phone-num mono" href="tel:+19093926056" aria-label="Call Garey Auto Repair">(909)&nbsp;392-6056</a>
+          <p class="phone-sub">
+            Picks up in the bay. If we're under a hood, we'll call back
+            inside the hour.
+          </p>
+          <div style="margin-top: 1rem; display:flex; gap:14px; flex-wrap:wrap;">
+            <a class="btn btn-primary" href="tel:+19093926056">Call now →</a>
+            <a class="btn" href="https://www.google.com/maps/dir/?api=1&destination=2580+N+Garey+Ave+Pomona+CA+91767" target="_blank" rel="noopener">Get directions</a>
+          </div>
+        </div>
+
+        <aside class="status-card" aria-label="Shop status">
+          <div class="status-row"><span>STATUS</span><span class="v live" id="liveStatus">OPEN</span></div>
+          <div class="status-row"><span>BAY 03</span><span class="v">OPEN · 14 MIN</span></div>
+          <div class="status-row"><span>QUEUE</span><span class="v">2 AHEAD</span></div>
+          <div class="status-row"><span>ADDRESS</span><span class="v">2580 N Garey Ave</span></div>
+          <div class="status-row"><span>POMONA · CA</span><span class="v">91767</span></div>
+          <div class="status-row"><span>TUE–FRI</span><span class="v">08:00 — 17:00</span></div>
+          <div class="status-row"><span>SATURDAY</span><span class="v">08:00 — 14:00</span></div>
+          <div class="status-row"><span>SUN · MON</span><span class="v">CLOSED</span></div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="gos-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <strong>GAREY AUTO REPAIR</strong><br />
+        2580 N Garey Ave · Pomona · CA · 91767<br />
+        (909) 392-6056 · est. 2006 · under new hands<br />
+        Independent auto repair operation. RepairPal Certified.
+      </div>
+      <div class="footer-meta">
+        © 2026 GAREY AUTO REPAIR<br />
+        THE LIGHT IS A SENTENCE · WE TRANSLATE
+      </div>
+    </div>
+  </footer>
+
+  <!-- mobile sticky bay-status bar -->
+  <div class="mobile-sticky" aria-label="Shop status">
+    <span class="live">BAY 03 · OPEN</span>
+    <span style="display:flex; align-items:center; color:var(--pearl-dim);">~14 MIN</span>
+    <a href="#contact">BOOK →</a>
+  </div>
+
+</div>
+
+<script>
+  // ============ Hero headline word cycle ============
+  (function(){
+    const el = document.getElementById('verbWord');
+    if (!el) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const words = ['warning.', 'problem.', 'mystery.', 'sentence.'];
+    let i = 0;
+    const finalIdx = words.length - 1;
+    function type(word, cb){
+      el.textContent = '';
+      let n = 0;
+      const tick = () => {
+        if (n <= word.length) {
+          el.textContent = word.slice(0, n++);
+          setTimeout(tick, 70);
+        } else cb && cb();
+      };
+      tick();
+    }
+    function erase(cb){
+      const cur = el.textContent;
+      let n = cur.length;
+      const tick = () => {
+        if (n >= 0) {
+          el.textContent = cur.slice(0, n--);
+          setTimeout(tick, 35);
+        } else cb && cb();
+      };
+      tick();
+    }
+    function cycle(){
+      type(words[i], () => {
+        if (i === finalIdx) return; // hold on "sentence."
+        setTimeout(() => erase(() => { i++; cycle(); }), 1100);
+      });
+    }
+    el.textContent = '';
+    setTimeout(cycle, 400);
+  })();
+
+  // ============ Telemetry stream ============
+  (function(){
+    const host = document.getElementById('telemetry');
+    if (!host) return;
+    const lines = [
+      ['09:42:11', 'OBD-II · MODULE 0x7E0', 'OK'],
+      ['09:42:14', 'BAY 03 · TICKET 0421', 'OPEN'],
+      ['09:42:18', 'CUSTOMER · BRAKE INSPECTION', 'IN'],
+      ['09:42:22', 'TIRE PRESSURE · 4×34 PSI', 'OK'],
+      ['09:42:27', 'COOLANT · 91°C', 'OK'],
+      ['09:42:31', 'QUOTE WRITTEN · PLAIN ENGLISH · LINE ITEMS', 'OK'],
+      ['09:42:35', 'BAY 02 · TRANS LIFT · IN PROGRESS', 'BUSY'],
+      ['09:42:40', 'OBD-II · CLEAR HANDOFF', 'OK'],
+      ['09:42:44', 'NEXT QUEUE · 14 MIN', 'OK'],
+      ['09:42:48', 'CALLBACK · BOOKED', 'OK']
+    ];
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let i = 0;
+    function add(){
+      const [ts, msg, status] = lines[i % lines.length];
+      const cls = status === 'OK' ? 'ok' : (status === 'BUSY' ? 'warn' : 'ok');
+      const row = document.createElement('div');
+      row.className = 'stream-line in';
+      row.innerHTML = '<span class="ts">[' + ts + ']</span>' + msg + ' <span class="' + cls + '">· ' + status + '</span>';
+      host.appendChild(row);
+      // keep last ~9
+      while (host.childElementCount > 9) host.removeChild(host.firstChild);
+      i++;
+      if (!reduced) setTimeout(add, 1100 + Math.random()*900);
+    }
+    if (reduced) {
+      lines.forEach(([ts, msg, status]) => {
+        const cls = status === 'OK' ? 'ok' : (status === 'BUSY' ? 'warn' : 'ok');
+        const row = document.createElement('div');
+        row.className = 'stream-line in';
+        row.innerHTML = '<span class="ts">[' + ts + ']</span>' + msg + ' <span class="' + cls + '">· ' + status + '</span>';
+        host.appendChild(row);
+      });
+    } else {
+      add();
+    }
+  })();
+
+  // ============ Translator ============
+  (function(){
+    const responses = {
+      turning: {
+        diag: 'Likely a dry CV joint or worn power-steering pump.',
+        do:   'We listen for both before we touch a wrench.',
+        cost: 'Diagnostic ~35 min · $75 (free if you book the repair).',
+        say:  'Drive it home — fine for short trips. Don\'t road-trip on it.'
+      },
+      brake: {
+        diag: 'Almost always uneven pad wear or a sticking caliper.',
+        do:   'We pull the wheel and measure both rotors before quoting.',
+        cost: 'Brake job runs $280–$720 depending on your vehicle.',
+        say:  'Don\'t put it off — uneven braking is a control problem.'
+      },
+      shudder: {
+        diag: 'Out-of-balance front tires or a warped front rotor.',
+        do:   'We re-balance first. Cheaper test, often the answer.',
+        cost: 'Balance + road test · $40. Rotor work if it\'s not that.',
+        say:  'Safe to drive. But it gets worse before it gets better.'
+      },
+      light: {
+        diag: 'Could be 1 of ~1,400 codes. Most are emissions-related.',
+        do:   'Scan tool reads every module — we translate to plain English.',
+        cost: 'Diagnostic $75. Free with same-week repair.',
+        say:  'If it\'s solid, drive it. If it\'s flashing, tow it.'
+      },
+      cold: {
+        diag: 'Usually battery, starter, or fuel pressure on a cold start.',
+        do:   'We test all three before we recommend replacing anything.',
+        cost: 'Cold-start diagnostic ~$95 (battery + starter + fuel).',
+        say:  'Park it nose-out tonight. We can see it tomorrow morning.'
+      }
+    };
+
+    const chips = document.querySelectorAll('.chip');
+    const out = document.getElementById('outBody');
+    const status = document.getElementById('outStatus');
+    if (!out || !chips.length) return;
+
+    function render(key){
+      const r = responses[key];
+      if (!r) return;
+      const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      out.classList.remove('out-cursor');
+      out.textContent = '';
+      status.textContent = 'TRANSLATING';
+      const fragments = [
+        ['→ ', 'accent'],
+        ['First read · ', 'meta'],
+        [r.diag + '\n\n', ''],
+        ['What we do · ', 'meta'],
+        [r.do + '\n\n', ''],
+        ['Cost · ', 'meta'],
+        [r.cost + '\n\n', ''],
+        ['Drive home? · ', 'meta'],
+        [r.say, '']
+      ];
+      if (reduced) {
+        out.innerHTML = fragments.map(([t,c]) => c ? '<span class="'+c+'">'+t+'</span>' : t).join('');
+        status.textContent = 'COMPLETE';
+        return;
+      }
+      let fi = 0, ci = 0;
+      out.classList.add('out-cursor');
+      function tick(){
+        if (fi >= fragments.length) {
+          out.classList.remove('out-cursor');
+          status.textContent = 'COMPLETE';
+          return;
+        }
+        const [t, c] = fragments[fi];
+        if (ci === 0 && c) {
+          const span = document.createElement('span');
+          span.className = c;
+          out.appendChild(span);
+        }
+        const target = c ? out.lastElementChild : out;
+        target.append(t.charAt(ci));
+        ci++;
+        if (ci > t.length) { fi++; ci = 0; }
+        setTimeout(tick, c === 'meta' ? 14 : 18);
+      }
+      tick();
+    }
+
+    chips.forEach(c => {
+      c.addEventListener('click', () => {
+        chips.forEach(x => x.classList.remove('active'));
+        c.classList.add('active');
+        render(c.dataset.key);
+      });
+    });
+    render('turning'); // initial
+  })();
+
+  // ============ Live Bay Diagnostic ============
+  (function(){
+    const stage  = document.getElementById('bayStage');
+    const cursor = document.getElementById('bayCursor');
+    const region = document.getElementById('hudRegion');
+    const reads  = document.getElementById('hudReadouts');
+    const stamp  = document.getElementById('hudStamp');
+    if (!stage) return;
+
+    // Detect coarse-pointer (touch-only). Fall back to tap-driven mode.
+    const coarse = window.matchMedia && window.matchMedia('(pointer: coarse)').matches;
+    if (coarse) stage.classList.add('no-cursor');
+
+    const data = {
+      engine: {
+        title: 'ENGINE',
+        rows: [
+          ['OIL PSI',    '42',    'ok'],
+          ['COOLANT',    '91 °C', 'ok'],
+          ['INTAKE TEMP','38 °C', 'ok'],
+          ['IDLE RPM',   '720',   'ok'],
+          ['OBD CODES',  'NONE',  'ok']
+        ]
+      },
+      brakes: {
+        title: 'BRAKES',
+        rows: [
+          ['PAD WEAR · F',  '38%',     'warn'],
+          ['PAD WEAR · R',  '62%',     'ok'],
+          ['ROTOR THICK',   '22.4 mm', 'ok'],
+          ['CALIPER · LF',  'STICKING','warn'],
+          ['FLUID',         'CLEAN',   'ok']
+        ]
+      },
+      suspension: {
+        title: 'SUSPENSION',
+        rows: [
+          ['STRUT · LF',    '70k mi',  'warn'],
+          ['STRUT · RF',    '70k mi',  'warn'],
+          ['BUSHINGS',      'OK',      'ok'],
+          ['ALIGNMENT',     '+0.3°',   'ok'],
+          ['TIRE WEAR',     'EVEN',    'ok']
+        ]
+      },
+      drivetrain: {
+        title: 'DRIVETRAIN',
+        rows: [
+          ['TRANS FLUID',  'AMBER',    'ok'],
+          ['SHIFT 2→3',    'CLEAN',    'ok'],
+          ['CV JOINT · L', 'DRY',      'warn'],
+          ['MOUNT · TRANS','OK',       'ok']
+        ]
+      },
+      cabin: {
+        title: 'CABIN',
+        rows: [
+          ['HVAC · COLD',   '4 °C',   'ok'],
+          ['BATTERY · 12V', '12.7 V', 'ok'],
+          ['DASH CODES',    'CLEAR',  'ok'],
+          ['INFOTAINMENT',  'NORMAL', 'ok']
+        ]
+      }
+    };
+
+    function setRegion(key){
+      const d = data[key];
+      if (!d) return;
+      region.textContent = '↳ ' + d.title;
+      reads.innerHTML = d.rows.map(([k,v,st]) =>
+        '<div class="hud-row"><span>'+k+'</span><span class="v '+st+'">'+v+'</span></div>'
+      ).join('');
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2,'0');
+      const mm = String(now.getMinutes()).padStart(2,'0');
+      const ss = String(now.getSeconds()).padStart(2,'0');
+      stamp.textContent = hh+':'+mm+':'+ss;
+    }
+
+    // pointer move = position cursor + select region under it
+    stage.addEventListener('mousemove', (e) => {
+      const r = stage.getBoundingClientRect();
+      cursor.style.left = (e.clientX - r.left) + 'px';
+      cursor.style.top  = (e.clientY - r.top)  + 'px';
+    });
+    stage.addEventListener('mouseleave', () => { cursor.style.opacity = 0; });
+
+    document.querySelectorAll('.bay-region').forEach(reg => {
+      reg.addEventListener('mouseenter', () => setRegion(reg.dataset.region));
+      reg.addEventListener('click',      () => setRegion(reg.dataset.region));
+      reg.addEventListener('focus',      () => setRegion(reg.dataset.region));
+      reg.setAttribute('tabindex','0');
+    });
+  })();
+
+  // ============ Year + status ============
+  (function(){
+    const live = document.getElementById('liveStatus');
+    if (!live) return;
+    const d = new Date();
+    const day = d.getDay(); // 0 sun, 1 mon ... 6 sat
+    const h = d.getHours();
+    let open = false;
+    if (day >= 2 && day <= 5 && h >= 8 && h < 17) open = true;
+    if (day === 6 && h >= 8 && h < 14) open = true;
+    live.textContent = open ? 'OPEN NOW' : 'CLOSED · CALLBACK QUEUE';
+  })();
+</script>
+</body>
+</html>
